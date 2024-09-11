@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Configurator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .company-header {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .configurator-section {
+            margin-top: 40px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .configurator-section h3 {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .configurator-summary {
+            margin-top: 30px;
+        }
+        .configurator-summary h4 {
+            font-size: 1.5em;
+            color: #343a40;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .configurator-summary p {
+            font-size: 1.2em;
+            color: #495057;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255,255,255,.75);
+            transition: color 0.3s ease;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgba(255,255,255,1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Company Name Header -->
+ <div class="company-header">
+    VITA MOTOR SERVICES
+    
+</div>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="Images/vitafavicon.jpg"></a>
+    <marquee style="color: white;">Get extra 5% discount on orders above 200 units</marquee>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button type="button" class="btn btn-login btn-light" data-toggle="modal" data-target="#loginModal">Login</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Vehicle Configurator Section -->
+    <div class="container configurator-section">
+        <h3>Select Your Vehicle Options</h3>
+        <form id="vehicleForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="vehicleType">Vehicle Type</label>
+                    <select id="vehicleType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>Truck</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="color">Color</label>
+                    <select id="color" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Black</option>
+                        <option>White</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="engine">Engine</label>
+                    <select id="engine" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>V6</option>
+                        <option>V8</option>
+                        <option>Electric</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="interior">Interior</label>
+                    <select id="interior" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Leather</option>
+                        <option>Fabric</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="showSummary()">Submit</button>
+        </form>
+        
+        <!-- Summary Section -->
+        <div class="configurator-summary mt-5">
+            <h4>Summary</h4>
+            <p id="summaryText">Your configuration :</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showSummary() {
+            const vehicleType = document.getElementById('vehicleType').value;
+            const color = document.getElementById('color').value;
+            const engine = document.getElementById('engine').value;
+            const interior = document.getElementById('interior').value;
+
+            const summaryText = `
+                <strong>Vehicle Type:</strong> ${vehicleType}<br>
+                <strong>Color:</strong> ${color}<br>
+                <strong>Engine:</strong> ${engine}<br>
+                <strong>Interior:</strong> ${interior}
+            `;
+
+            document.getElementById('summaryText').innerHTML = summaryText;
+        }
+    </script>
+</body>
+</html>
