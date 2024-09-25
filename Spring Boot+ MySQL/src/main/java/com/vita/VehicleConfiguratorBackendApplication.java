@@ -14,7 +14,7 @@ public class VehicleConfiguratorBackendApplication {
 		//  set a your profile programmatically
 		
 	        SpringApplication app = new SpringApplication(VehicleConfiguratorBackendApplication.class);
-	        app.setAdditionalProfiles("jayesh");
+	        app.setAdditionalProfiles("chaitanya");
 	        app.run(args);
 
 	       
